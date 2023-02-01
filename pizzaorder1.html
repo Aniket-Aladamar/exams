@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bill{
+            border: 5px solid black;
+            width: 500px;
+            height: auto;
+            margin: auto;
+            padding: 5px;
+            padding-left: 10px;
+            float: center;
+            margin-top: 100px;
+        }
+        .main{
+            border: 1px solid black;
+            margin: auto;
+            width: 500px;
+            height: 300px;
+            float: center;
+            padding: 5px;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body class="main">
+    <div>
+    <table>
+        <tr>
+            <td>NAME = </td>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <td>Ph. No. =  </td>
+            <td><input type="number" id="ph"></td>
+        </tr>
+            
+        <tr>
+            <td>SIZE = </td>
+            <td><input type="radio" id="regular" name="size" >REGULAR<br>
+                <input type="radio" id="medium" name="size" >MEDIUM<br>
+                <input type="radio" id="large" name="size" >LARGE</td>
+        </tr>
+        <tr>
+            <td>TOPPINGS</td>
+            <td><input type="checkbox" id="cheese">CHEESE<br>
+                <input type="checkbox" id="veg">VEGGIES<br>
+                <input type="checkbox" id="meat">MEAT
+            </td>
+            <tr>
+                <td>QUANTITY = </td>
+                <td><input type="number" id="qty"></td>
+            </tr>
+        </tr>
+    </table>
+    <button id="btn" style="border-color: black; margin-left: 200px; margin-bottom: 30px; font-size: 20px; ">SUBMIT</button>
+    </div>
+
+    
+    <div id="bill" class="bill">
+        <h1 align="center"><u>ORDER</u>&nbsp;<u>BILL</u></h1>
+        <p id="name1" style="padding-left: 10px; font-size: 20px;"></p>
+        <p id="ph1"   style="padding-left: 10px; font-size: 20px;"></p>
+        <p id="items" style="padding-left: 10px; font-size: 20px;"></p>
+        <p id="qty1"  style="padding-left: 10px; font-size: 20px;"></p>
+        <p id="total"  style="padding-left: 10px; font-size: 30px; font-weight: bold;"></p>
+
+
+    </div>
+    <script>
+        document.getElementById("btn").addEventListener("click",calculate);
+        function calculate(){
+            var name=document.getElementById("name").value;
+                document.getElementById("name1").innerHTML="NAME = "+name;
+            var ph=document.getElementById("ph").value;
+                document.getElementById("ph1").innerHTML="Ph.No. = "+ph;
+            var qty=document.getElementById("qty").value;
+                document.getElementById("qty1").innerHTML="No. Of Pizza = "+qty;
+            var p=0;
+            var a;
+            var b="";
+            var c="";
+            var d="";
+            if(document.getElementById("regular").checked==true)
+            {
+                p=p+150;
+                a="REGULAR-";
+            }
+            if(document.getElementById("medium").checked==true)
+            {
+                p=p+300;
+                a="MEDIUM-";
+            }
+            if(document.getElementById("large").checked==true)
+            {
+                p=p+400;
+                a="LARGE-";
+            }
+            if(document.getElementById("cheese").checked==true)
+            {
+                p=p+100;
+                b="CHEESE-"
+
+            }
+            if(document.getElementById("veg").checked==true)
+            {
+                p=p+125;
+                c="VEGGIEE-";
+            }
+            if(document.getElementById("meat").checked==true)
+            {
+                p=p+150;
+                d="MEAT-"
+            }
+            p=p*qty;
+            document.getElementById("items").innerHTML="Your Order = "+a+b+c+d+"PIZZA";
+            document.getElementById("total").innerHTML="TOTAL = "+p;
+        }
+        
+
+
+    </script>
+</body>
+</html>
